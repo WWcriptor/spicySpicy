@@ -1,0 +1,327 @@
+@font-face {
+    font-family: 'neurimboGothicRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/neurimboGothicRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    position: relative;
+    overflow-x: hidden;
+    font-family: 'NanumSquareNeo-Variable';
+}
+
+html{
+    font-size: 10px;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: sticky;
+    top: 0px;
+}
+
+.title{
+    font-family: 'neurimboGothicRegular';
+}
+
+.name{
+    font-size: 4.5rem;
+    margin-top: 5vh;
+}
+
+.explan{
+    width: 60%;
+    line-height: 150%;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+.explan2{
+    width: 50%;
+    line-height: 150%;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+
+.left{width: 50%;}
+.right{width: 50%; overflow-y: hidden; position: relative;}
+
+
+.scale90{
+    transform: scale(90%);
+}
+
+.grid{
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+}
+.gradient{
+    margin-top: 2vw;
+    width: 48vw;
+    height: 1.5vh;
+    border-radius: 0.5vw;
+    background: linear-gradient(0.25turn, #1a0000, #ff1300);
+}
+
+.triangle{
+    transform: translateX(35%) scale(70%);
+    opacity: 0;
+}
+
+.scoville{
+    margin-right: -3%;
+    font-size: 1.6rem;
+    opacity: 0;
+}
+
+.arrayRight{
+    display: flex;
+    justify-content: end;
+}
+
+.arrayCenter{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    opacity: 0;
+}
+
+.arrayRow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrayRow2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+}
+
+.year{
+    font-size: 1.6rem;
+    margin-top: 2vh;
+    opacity: 0;
+}
+
+.food{
+    width: 60%;
+    transform: translateY(5vh);
+}
+
+.shu1{
+    margin-right: 4.65%;
+}
+.shu2{
+    margin-right: 9.30%;
+}
+.shu3{
+    margin-right: 17.44%;
+}
+.shu4{
+    margin-right: 20.93%;
+}
+.shu5{
+    margin-right: 40.70%;
+}
+.shu6{
+    margin-right: 45.40%;
+}
+.shu7{
+    margin-right: 52.33%;
+}
+.shu8{
+    margin-right: 95.42%;
+}
+
+.logo{
+    font-size: 20rem;
+}
+
+#bg1{
+    background-image: url(img/1tteockbbogileft.png);
+    background-size: cover;
+}
+#bg2{
+    background-image: url(img/2cheongyangleft.png);
+    background-size: cover;
+}
+#bg3{
+    background-image: url(img/3shinramyunleft.png);
+    background-size: cover;
+}
+#bg4{
+    background-image: url(img/4jjambbongleft.png);
+    background-size: cover;
+}
+#bg5{
+    background-image: url(img/5shinjeonleft.png);
+    background-size: cover;
+}
+#bg6{
+    background-image: url(img/6yupdduckleft.png);
+    background-size: cover;
+}
+#bg7{
+    background-image: url(img/7buldakleft.png);
+    background-size: cover;
+}
+#bg8{
+    background-image: url(img/8maraleft.png);
+    background-size: cover;
+}
+#bg9{
+    background-image: url(img/9hackbuldakleft.png);
+    background-size: cover;
+}
+
+.bottom{
+    position: absolute;
+    bottom: 10vh;
+}
+
+#redBack{background-color: #ff1300; }
+#redBack2{background-color: #ff1300; align-items: center;}
+
+#container1{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    z-index: 11;
+}
+
+.sa{
+    opacity: 0;
+}
+
+#container1 .sa{
+    opacity: 1;
+}
+
+#container2{
+    z-index: 10;
+}
+
+#container3{
+    z-index: 9;
+}
+
+#container4{
+    z-index: 8;
+}
+
+#container5{
+    z-index: 7;
+}
+
+#container6{
+    z-index: 6;
+}
+
+#container7{
+    z-index: 5;
+}
+
+#container8{
+    z-index: 4;
+}
+
+#container9{
+    z-index: 3;
+}
+
+#container10{
+    z-index: 2;
+}
+
+@media all and (max-width: 600px)
+{
+    .container{
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .logo{
+        font-size: 10rem;
+    }
+
+    .explan2{
+        font-size: 1.4rem;
+        overflow: visible;
+    }
+
+    .left{width: 100%; height: 50%; overflow-y: hidden; order: 2;}
+    .right{width: 100%; height: 50%; position: relative; overflow: visible;}
+    
+    .arrayRow{
+        overflow: visible;
+    }
+
+    #container1 .right{
+        order: 3;
+        z-index: -3;
+    }
+    
+    .left img{
+        width: 100vw;
+        height: auto;
+    }
+    .gradient{
+        margin-top: 2vw;
+        width: 96vw;
+        height: 1vh;
+    }
+    .scoville{
+        font-size: 1.2rem;
+    }
+    #scoville1{
+        transform: translateX(0%);
+    }
+    .year{
+        margin-top: 1.2vh;
+        font-size: 1.4rem;
+    }
+    .name{
+        margin-top: 1vh;
+        font-size: 3.6rem;
+    }
+    .explan{
+        font-size: 1.4rem;
+        width: 60%;
+        margin-top: 1vh;
+    }
+    .food{
+        height: 15vh;
+        width: auto;
+        transform: translateY(0);
+    }
+    .bottom{
+        position: absolute;
+        bottom: 2vh
+    }
+    .scale90{
+        transform: scale(80%);
+    }  
+}
