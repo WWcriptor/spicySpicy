@@ -1390,4 +1390,14 @@ function calcAni(value)
     return( relativeScrollY / pixelDuration ) * (value[1] - value[0]) +value[0] ;
 }
 
+let simbol = document.getElementById('up');
+simbol.addEventListener('click',upFn);
+
+function upFn()
+{
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'});
+}
+
 init();

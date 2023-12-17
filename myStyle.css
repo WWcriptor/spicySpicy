@@ -11,6 +11,24 @@
     font-style: normal;
 }
 
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 48;
+
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  transform: scale(2);
+  z-index: 100;
+  user-select: none;
+}
+
+
+
 *{
     margin: 0px;
     padding: 0px;
@@ -269,6 +287,10 @@ html{
     background-color: white;
 }
 
+#up{
+    color: #ff1300;
+}
+
 @media all and (max-width: 600px)
 {
     .container{
@@ -346,5 +368,9 @@ html{
     }  
     .exScov{
         z-index: 1;
+    }
+
+    #up{
+        color: white;
     }
 }
