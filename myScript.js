@@ -147,6 +147,36 @@ let aniKeyFrames=[
             opacity2:[1,0],
         }
     },
+     {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    }
 ]
 
 let aniKeyFrames2=[
@@ -288,6 +318,42 @@ let aniKeyFrames2=[
             opacity2:[1,0],
         }
     },
+    {//아웃트로 in
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    },
+    {//더미
+        aniVal:{
+            opacity:[0,1],
+            opacity2:[1,0]
+        }
+    }
 ]
 
 let elbody = document.body;
@@ -325,12 +391,11 @@ function scrollHandler()
     }
 
     relativeScrollY = scrollY - prevDuration;
-
-    if(windowWidth<600){
-        render2(currentScene);
+    if(windowWidth>600){
+        render(currentScene);
     }
     else{
-        render(currentScene);
+        render2(currentScene);
     }
     //console.log(currentScene);
 }
@@ -364,19 +429,31 @@ function render(nowState)
     let tri = document.querySelector('.triangle');
     let bg = document.getElementById('redBack');
     let grid =document.querySelector('.grid');
+    let white = document.querySelectorAll('.bgWhite');
 
     switch(nowState)
     {
-        case 1 :{
-            let opacityVal, moveTopVal;
+        case 1:{
+            let scrollAniElem = targetElem[0].querySelectorAll('.sa');
+            scrollAniElem[0].style.opacity=1;
+            bg.style.backgroundColor='rgba(255,19,0,1)';
+        }break;
+        case 2 :{
+            let opacityVal;
             let scrollAniElem = targetElem[0].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[0].aniVal.opacity);
 
+            targetBack[0].style.opacity=1;
             bg.style.backgroundColor='rgba(255, 19, 0,' + opacityVal +')';
             scrollAniElem[0].style.opacity = opacityVal;
 
         }break;
-        case 2 :{
+        case 3 :{
+            let scrollAniElem0 = targetElem[0].querySelectorAll('.sa');
+            bg.style.backgroundColor='rgba(255,19,0,0)';
+            scrollAniElem0[0].style.opacity=0;
+            white[0].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '900SHU';
             targetYear.textContent = '1953';
             let opacityVal, opacityVal2;
@@ -393,7 +470,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 3 :{
+        case 4 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[1].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[2].aniVal.opacity);
@@ -402,6 +479,16 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[2].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[2].aniVal.scoville);
 
+            year.style.opacity=1;
+            tri.style.opacity=1;
+            scov.style.opacity=1;
+            grid.style.opacity=1;
+            targetBack[0].style.opacity = 0;
+            targetBack[1].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -409,12 +496,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[0].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 4 :{
+        case 5 :{
+            let scrollAniElem0 = targetElem[1].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity =0;
+            white[0].style.backgroundColor='rgba(255,255,255,0)';
+            white[1].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '4000SHU';
             targetYear.textContent = '1983';
             let opacityVal, opacityVal2;
@@ -427,7 +522,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 5 :{
+        case 6 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[2].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[4].aniVal.opacity);
@@ -436,6 +531,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[4].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[4].aniVal.scoville);
 
+            targetBack[1].style.opacity = 0;
+            targetBack[2].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -443,12 +544,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[1].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 6 :{
+        case 7 :{
+            let scrollAniElem0 = targetElem[2].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[1].style.backgroundColor='rgba(255,255,255,0)';
+            white[2].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '1300SHU';
             targetYear.textContent = '1986';
             let opacityVal, opacityVal2;
@@ -461,7 +570,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 7 :{
+        case 8 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[3].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[6].aniVal.opacity);
@@ -470,6 +579,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[6].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[6].aniVal.scoville);
 
+            targetBack[2].style.opacity = 0;
+            targetBack[3].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -477,12 +592,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[2].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 8 :{
+        case 9 :{
+            let scrollAniElem0 = targetElem[3].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity = 0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[2].style.backgroundColor='rgba(255,255,255,0)';
+            white[3].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '2300SHU';
             targetYear.textContent = '1997';
             let opacityVal, opacityVal2;
@@ -495,7 +618,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 9 :{
+        case 10 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[4].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[8].aniVal.opacity);
@@ -504,6 +627,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[8].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[8].aniVal.scoville);
 
+            targetBack[3].style.opacity = 0;
+            targetBack[4].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -511,12 +640,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[3].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 10 :{
+        case 11 :{
+            let scrollAniElem0 = targetElem[4].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[3].style.backgroundColor='rgba(255,255,255,0)';
+            white[4].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '2000SHU';
             targetYear.textContent = '1999';
             let opacityVal, opacityVal2;
@@ -529,7 +666,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 11 :{
+        case 12 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[5].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[10].aniVal.opacity);
@@ -538,6 +675,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[10].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[10].aniVal.scoville);
 
+            targetBack[4].style.opacity = 0;
+            targetBack[5].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -545,12 +688,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[4].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 12 :{
+        case 13 :{
+            let scrollAniElem0 = targetElem[5].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[4].style.backgroundColor='rgba(255,255,255,0)';
+            white[5].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '4000SHU';
             targetYear.textContent = '2002';
             let opacityVal, opacityVal2;
@@ -563,7 +714,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 13 :{
+        case 14 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[6].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[12].aniVal.opacity);
@@ -572,6 +723,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[12].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[12].aniVal.scoville);
 
+            targetBack[5].style.opacity = 0;
+            targetBack[6].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -579,12 +736,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[5].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 14 :{
+        case 15 :{
+            let scrollAniElem0 = targetElem[6].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[5].style.backgroundColor='rgba(255,255,255,0)';
+            white[6].style.backgroundColor='rgba(255,255,255,1)';
+            
             scov.textContent = '4404SHU';
             targetYear.textContent = '2012';
             let opacityVal, opacityVal2;
@@ -597,7 +762,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 15 :{
+        case 16 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[7].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[14].aniVal.opacity);
@@ -606,6 +771,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[14].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[14].aniVal.scoville);
 
+            targetBack[6].style.opacity = 0;
+            targetBack[7].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -613,12 +784,20 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[6].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 16 :{
+        case 17 :{
+            let scrollAniElem0 = targetElem[7].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[6].style.backgroundColor='rgba(255,255,255,0)';
+            white[7].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '5000SHU';
             targetYear.textContent = '2013';
             let opacityVal, opacityVal2;
@@ -631,7 +810,7 @@ function render(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 17 :{
+        case 18 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[8].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[16].aniVal.opacity);
@@ -640,6 +819,12 @@ function render(nowState)
             triVal = calcAni(aniKeyFrames[16].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames[16].aniVal.scoville);
 
+            targetBack[7].style.opacity = 0;
+            targetBack[8].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -647,12 +832,21 @@ function render(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[7].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 18 :{
+        case 19 :{
+            let scrollAniElem0 = targetElem[8].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[7].style.backgroundColor='rgba(255,255,255,0)';
+            white[8].style.backgroundColor='rgba(255,255,255,1)';
+            targetBack[9].style.opacity=1;
+
             scov.textContent = '8706SHU';
             targetYear.textContent = '2017';
             let opacityVal, opacityVal2;
@@ -664,27 +858,46 @@ function render(nowState)
             scrollAniElem[0].style.opacity = opacityVal;
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
+            tri.style.opacity=1;
+            scov.style.opacity=1;
+            grid.style.opacity=1;
+            year.style.opacity=1;
         }break;
-        case 19 :{
+        case 22:{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[9].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames[18].aniVal.opacity);
             opacityVal2 = calcAni(aniKeyFrames[18].aniVal.opacity2);
-            yearVal = calcAni(aniKeyFrames[18].aniVal.years);
-            triVal = calcAni(aniKeyFrames[18].aniVal.marks);
-            scovilleVal = calcAni(aniKeyFrames[18].aniVal.scoville);
 
-            let limitedScov = Math.floor(scovilleVal);
-            let limitedYear = Math.floor(yearVal);
+            targetBack[8].style.opacity = 0;
+            targetBack[9].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
 
-            scov.textContent = limitedScov +"SHU";
-            targetYear.textContent = limitedYear;
-            tri.style.transform = 'translateX(' + triVal +'vw)';
-            scov.style.transform = 'translateX(' + triVal +'vw)';
+            tri.style.opacity=opacityVal2;
+            scov.style.opacity=opacityVal2;
+            grid.style.opacity=opacityVal2;
+            year.style.opacity=opacityVal2;
+            white[8].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
-
+            targetBack[9].style.opacity = opacityVal2;
+            
+        }break;
+        case 23:{
+            let scrollAniElem0 = targetElem[9].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[8].style.backgroundColor='rgba(255,255,255,0)';
+            targetBack[9].style.opacity=0;
+            tri.style.opacity=0;
+            scov.style.opacity=0;
+            grid.style.opacity=0;
+            year.style.opacity=0;
+            
         }break;
     }
 }
@@ -699,20 +912,31 @@ function render2(nowState)
     let tri = document.querySelector('.triangle');
     let bg = document.getElementById('redBack');
     let grid =document.querySelector('.grid');
+    let white = document.querySelectorAll('.bgWhite');
 
     switch(nowState)
     {
-        case 1 :{
-            let opacityVal, opacityVal2;
+        case 1:{
             let scrollAniElem = targetElem[0].querySelectorAll('.sa');
-            opacityVal = calcAni(aniKeyFrames2[0].aniVal.opacity);
-            opacityVal2 = calcAni(aniKeyFrames2[1].aniVal.opacity2);
-
-            scrollAniElem[0].style.opacity = opacityVal;
-            targetBack[0].style.opacity = opacityVal2;
-
+            scrollAniElem[0].style.opacity=1;
+            bg.style.backgroundColor='rgba(255,19,0,1)';
         }break;
         case 2 :{
+            let opacityVal;
+            let scrollAniElem = targetElem[0].querySelectorAll('.sa');
+            opacityVal = calcAni(aniKeyFrames2[0].aniVal.opacity);
+
+            targetBack[0].style.opacity=1;
+            bg.style.backgroundColor='rgba(255, 19, 0,' + opacityVal +')';
+            scrollAniElem[0].style.opacity = opacityVal;
+
+        }break;
+        case 3 :{
+            let scrollAniElem0 = targetElem[0].querySelectorAll('.sa');
+            bg.style.backgroundColor='rgba(255,19,0,0)';
+            scrollAniElem0[0].style.opacity=0;
+            white[0].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '900SHU';
             targetYear.textContent = '1953';
             let opacityVal, opacityVal2;
@@ -720,16 +944,16 @@ function render2(nowState)
             opacityVal = calcAni(aniKeyFrames2[1].aniVal.opacity);
             opacityVal2 = calcAni(aniKeyFrames2[1].aniVal.opacity2);
             
-            bg.style.backgroundColor='rgba(255, 19, 0,' + opacityVal2 +')';
             year.style.opacity=opacityVal;
             tri.style.opacity=opacityVal;
             scov.style.opacity=opacityVal;
             grid.style.opacity=opacityVal;
+            targetBack[0].style.opacity = opacityVal2;
             scrollAniElem[0].style.opacity = opacityVal;
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 3 :{
+        case 4 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[1].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[2].aniVal.opacity);
@@ -738,6 +962,16 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[2].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[2].aniVal.scoville);
 
+            year.style.opacity=1;
+            tri.style.opacity=1;
+            scov.style.opacity=1;
+            grid.style.opacity=1;
+            targetBack[0].style.opacity = 0;
+            targetBack[1].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -745,12 +979,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[0].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 4 :{
+        case 5 :{
+            let scrollAniElem0 = targetElem[1].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity =0;
+            white[0].style.backgroundColor='rgba(255,255,255,0)';
+            white[1].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '4000SHU';
             targetYear.textContent = '1983';
             let opacityVal, opacityVal2;
@@ -763,7 +1005,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 5 :{
+        case 6 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[2].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[4].aniVal.opacity);
@@ -772,6 +1014,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[4].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[4].aniVal.scoville);
 
+            targetBack[1].style.opacity = 0;
+            targetBack[2].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -779,12 +1027,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[1].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 6 :{
+        case 7 :{
+            let scrollAniElem0 = targetElem[2].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[1].style.backgroundColor='rgba(255,255,255,0)';
+            white[2].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '1300SHU';
             targetYear.textContent = '1986';
             let opacityVal, opacityVal2;
@@ -797,7 +1053,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 7 :{
+        case 8 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[3].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[6].aniVal.opacity);
@@ -806,6 +1062,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[6].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[6].aniVal.scoville);
 
+            targetBack[2].style.opacity = 0;
+            targetBack[3].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -813,12 +1075,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[2].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 8 :{
+        case 9 :{
+            let scrollAniElem0 = targetElem[3].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity = 0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[2].style.backgroundColor='rgba(255,255,255,0)';
+            white[3].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '2300SHU';
             targetYear.textContent = '1997';
             let opacityVal, opacityVal2;
@@ -831,7 +1101,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 9 :{
+        case 10 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[4].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[8].aniVal.opacity);
@@ -840,6 +1110,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[8].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[8].aniVal.scoville);
 
+            targetBack[3].style.opacity = 0;
+            targetBack[4].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -847,12 +1123,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[3].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 10 :{
+        case 11 :{
+            let scrollAniElem0 = targetElem[4].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[3].style.backgroundColor='rgba(255,255,255,0)';
+            white[4].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '2000SHU';
             targetYear.textContent = '1999';
             let opacityVal, opacityVal2;
@@ -865,7 +1149,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 11 :{
+        case 12 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[5].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[10].aniVal.opacity);
@@ -874,6 +1158,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[10].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[10].aniVal.scoville);
 
+            targetBack[4].style.opacity = 0;
+            targetBack[5].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -881,12 +1171,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[4].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 12 :{
+        case 13 :{
+            let scrollAniElem0 = targetElem[5].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[4].style.backgroundColor='rgba(255,255,255,0)';
+            white[5].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '4000SHU';
             targetYear.textContent = '2002';
             let opacityVal, opacityVal2;
@@ -899,7 +1197,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 13 :{
+        case 14 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[6].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[12].aniVal.opacity);
@@ -908,6 +1206,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[12].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[12].aniVal.scoville);
 
+            targetBack[5].style.opacity = 0;
+            targetBack[6].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -915,12 +1219,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[5].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 14 :{
+        case 15 :{
+            let scrollAniElem0 = targetElem[6].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[5].style.backgroundColor='rgba(255,255,255,0)';
+            white[6].style.backgroundColor='rgba(255,255,255,1)';
+            
             scov.textContent = '4404SHU';
             targetYear.textContent = '2012';
             let opacityVal, opacityVal2;
@@ -933,7 +1245,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 15 :{
+        case 16 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[7].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[14].aniVal.opacity);
@@ -942,6 +1254,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[14].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[14].aniVal.scoville);
 
+            targetBack[6].style.opacity = 0;
+            targetBack[7].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -949,12 +1267,20 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[6].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 16 :{
+        case 17 :{
+            let scrollAniElem0 = targetElem[7].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[6].style.backgroundColor='rgba(255,255,255,0)';
+            white[7].style.backgroundColor='rgba(255,255,255,1)';
+
             scov.textContent = '5000SHU';
             targetYear.textContent = '2013';
             let opacityVal, opacityVal2;
@@ -967,7 +1293,7 @@ function render2(nowState)
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
         }break;
-        case 17 :{
+        case 18 :{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[8].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[16].aniVal.opacity);
@@ -976,6 +1302,12 @@ function render2(nowState)
             triVal = calcAni(aniKeyFrames2[16].aniVal.marks);
             scovilleVal = calcAni(aniKeyFrames2[16].aniVal.scoville);
 
+            targetBack[7].style.opacity = 0;
+            targetBack[8].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
+
             let limitedScov = Math.floor(scovilleVal);
             let limitedYear = Math.floor(yearVal);
 
@@ -983,12 +1315,21 @@ function render2(nowState)
             targetYear.textContent = limitedYear;
             tri.style.transform = 'translateX(' + triVal +'vw)';
             scov.style.transform = 'translateX(' + triVal +'vw)';
+            white[7].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
 
         }break;
-        case 18 :{
+        case 19 :{
+            let scrollAniElem0 = targetElem[8].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[7].style.backgroundColor='rgba(255,255,255,0)';
+            white[8].style.backgroundColor='rgba(255,255,255,1)';
+            targetBack[9].style.opacity=1;
+
             scov.textContent = '8706SHU';
             targetYear.textContent = '2017';
             let opacityVal, opacityVal2;
@@ -1000,27 +1341,46 @@ function render2(nowState)
             scrollAniElem[0].style.opacity = opacityVal;
             scrollAniElem[1].style.opacity = opacityVal;
             scrollAniElem[2].style.opacity = opacityVal;
+            tri.style.opacity=1;
+            scov.style.opacity=1;
+            grid.style.opacity=1;
+            year.style.opacity=1;
         }break;
-        case 19 :{
+        case 22:{
             let yearVal, triVal, scovilleVal, opacityVal, opacityVal2;
             let scrollAniElem = targetElem[9].querySelectorAll('.sa');
             opacityVal = calcAni(aniKeyFrames2[18].aniVal.opacity);
             opacityVal2 = calcAni(aniKeyFrames2[18].aniVal.opacity2);
-            yearVal = calcAni(aniKeyFrames2[18].aniVal.years);
-            triVal = calcAni(aniKeyFrames2[18].aniVal.marks);
-            scovilleVal = calcAni(aniKeyFrames2[18].aniVal.scoville);
 
-            let limitedScov = Math.floor(scovilleVal);
-            let limitedYear = Math.floor(yearVal);
+            targetBack[8].style.opacity = 0;
+            targetBack[9].style.opacity=1;
+            scrollAniElem[0].style.opacity = 1;
+            scrollAniElem[1].style.opacity = 1;
+            scrollAniElem[2].style.opacity = 1;
 
-            scov.textContent = limitedScov +"SHU";
-            targetYear.textContent = limitedYear;
-            tri.style.transform = 'translateX(' + triVal +'vw)';
-            scov.style.transform = 'translateX(' + triVal +'vw)';
+            tri.style.opacity=opacityVal2;
+            scov.style.opacity=opacityVal2;
+            grid.style.opacity=opacityVal2;
+            year.style.opacity=opacityVal2;
+            white[8].style.backgroundColor='rgba(255,255,255,'+opacityVal2+')';
             scrollAniElem[0].style.opacity=opacityVal2;
             scrollAniElem[1].style.opacity = opacityVal2;
             scrollAniElem[2].style.opacity = opacityVal2;
-
+            targetBack[9].style.opacity = opacityVal2;
+            
+        }break;
+        case 23:{
+            let scrollAniElem0 = targetElem[9].querySelectorAll('.sa');
+            scrollAniElem0[0].style.opacity=0;
+            scrollAniElem0[1].style.opacity =0;
+            scrollAniElem0[2].style.opacity = 0;
+            white[8].style.backgroundColor='rgba(255,255,255,0)';
+            targetBack[9].style.opacity=0;
+            tri.style.opacity=0;
+            scov.style.opacity=0;
+            grid.style.opacity=0;
+            year.style.opacity=0;
+            
         }break;
     }
 }
